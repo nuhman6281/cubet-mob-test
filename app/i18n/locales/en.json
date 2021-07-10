@@ -2,5 +2,8 @@
   "app_common": {
     "name": "cubnet",
     "common_error": "Something went wrong"
+  },
+  "login_screen": {
+    "header": "Login"
   }
 }

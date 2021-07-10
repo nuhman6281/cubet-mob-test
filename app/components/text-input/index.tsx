@@ -1,17 +1,29 @@
-import React from 'react';
-import { StyleSheet, TextInput, View, Keyboard } from "react-native"
+import React, { FC, ReactElement } from 'react';
+import { StyleSheet, TextInput, View, Keyboard, ViewStyle } from "react-native"
 import { colors, fonts } from "../../constants/theme";
 import I18n from '../../i18n/i18n';
-
-const DEFAULT_PLACE_HOLDER = I18n.t('day_edit_screen.enter_thoughts_text');
 
 const onSubmitEditing = (onSubmit) => {
     Keyboard.dismiss();
     onSubmit();
 }
 
-const CustomTextInput = ({
-    placeholder = DEFAULT_PLACE_HOLDER,
+type ChildProps = {
+    placeholder?: string;
+    onChangeText?(text): Function
+    style?: ViewStyle;
+    value?: string;
+    multiline?: boolean;
+    blurOnSubmit?: boolean;
+    containerStyle?: ViewStyle;
+    returnKeyType?: any;
+    isEditable?: boolean;
+    autoFocus?: boolean;
+    onSubmit?(): Function
+}
+
+const CustomTextInput: FC<ChildProps> = ({
+    placeholder,
     onChangeText,
     style,
     value,
@@ -22,7 +34,8 @@ const CustomTextInput = ({
     isEditable,
     autoFocus,
     onSubmit
-}) => {
+}): ReactElement => {
+
     return (
         <View style={[styles.textInputContainer, { ...containerStyle }]} >
             <TextInput
@@ -36,8 +49,10 @@ const CustomTextInput = ({
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}
+                placeholderTextColor={colors.placeholder}
                 style={[styles.textInput, { ...style }]}
             />
+
         </View>
     )
 }
@@ -47,13 +62,15 @@ export default CustomTextInput;
 
 const styles = StyleSheet.create({
     textInputContainer: {
-        marginHorizontal: 20,
-        marginTop: 18
+        
     },
     textInput: {
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: '400',
         color: colors.secondaryColor,
-        fontFamily: fonts.interRegular
+        fontFamily: fonts.interRegular,
+        borderBottomColor: colors.brownColor,
+        borderBottomWidth: 1.6
+
     }
 })
