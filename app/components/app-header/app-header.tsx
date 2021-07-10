@@ -1,40 +1,83 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
     StyleSheet,
+    TouchableOpacity,
     View
 } from 'react-native';
 import { colors } from '../../constants/theme';
 import { HeaderBackIcon } from './components/header-left';
 import { HeaderTextContainer } from './components/header-container';
 import { commonStyles } from '../../styles';
+import Text from '../display-text/display-text';
+import I18n from 'i18n-js';
+import { Icon } from 'react-native-elements';
 
-const AppHeader = ({ goBack, navigation, headerText = "", backIcon = false }) => {
+const BACK_ICON = 'chevron-left';
+const BACK_ICON_TYPE = 'entypo';
 
-    const onPressBackIcon = () => {
-        navigation.goBack();
+type ChildProps = {
+    goBack?: Function,
+    navigation?: any,
+    headerText?: string,
+    backIcon?: boolean,
+}
+const AppHeader: FC<ChildProps> = ({
+    goBack,
+    navigation,
+    headerText = "",
+    backIcon = false
+}): ReactElement => {
+
+
+    const backButton = () => {
+        return (
+            <View style={styles.backArrowContainer} >
+                <TouchableOpacity  >
+                    <Icon
+                        name={BACK_ICON}
+                        type={BACK_ICON_TYPE}
+                        color={colors.brownColor}
+                        size={20}
+                    />
+                </TouchableOpacity>
+            </View>
+        )
     }
 
-    return null;
-    /*  (
-         <View
-             style={styles.container}>
-             {backIcon && <HeaderBackIcon
-                 style={commonStyles.leftIconContainer}
-                 onPressBackIcon={onPressBackIcon}
-             />}
-             <HeaderTextContainer
-                 headerText={headerText}
-             />
-         </View>
-     ) */
+    return (
+        <View style={[styles.container, { flexDirection: 'row' }]}>
+            <View style={{ width: '100%', alignItems: 'center' }}>
+                <Text style={{
+                    fontSize: 22,
+                    color: colors.brownColor
+                }} >{headerText}</Text>
+                {backIcon && backButton()}
+            </View>
+        </View>
+    )
+
 }
 
 export default AppHeader;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.primaryColor,
-        paddingVertical: 15,
-        paddingTop: 20
+        backgroundColor: colors.appBackground,
+        paddingVertical: 15
     },
+    backArrowContainer: {
+        alignItems: 'center',
+        position: 'absolute',
+        height: '100%',
+        justifyContent: 'center',
+        left: 0,
+        width: '20%',
+        zIndex: 100
+    },
+    icon: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: colors.brownColor
+    }
 })
+
