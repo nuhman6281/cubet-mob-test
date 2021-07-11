@@ -9,5 +9,13 @@
     "no_account_text": "Don’t have an account?",
     "register": "Register",
     "forgotPassword": "Forgot password"
+  },
+  "drinks_screen": {
+    "header": "Menu"
+  },
+  "preferences": {
+    "header": "Preferences",
+    "total_text": "Total",
+    "egp": "EGP"
   }
 }
