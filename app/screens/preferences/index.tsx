@@ -5,14 +5,10 @@ import { commonStyles } from '../../styles';
 import { colors } from '../../constants/theme';
 import { StyleSheet } from 'react-native';
 import { useState } from 'react';
-import { useEffect } from 'react';
-import { RefreshControl } from 'react-native';
-import { SPINNER_COLORS } from '../../constants/app-constants';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCoffeeDetail } from '../../actions/coffie-actions';
 import { Avatar, Icon } from 'react-native-elements';
 import PNG_ICONS from '../../assets/png-icons';
 import Button from '../../components/button';
+import I18n from '../../i18n/i18n';
 
 const ADD_CART = "ADD";
 const REMOVE_CART = "REMOVE";
@@ -24,7 +20,7 @@ const DrinkPreferences = ({ navigation, route }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             header: () => <AppHeader
-                headerText={"Preferences"}
+                headerText={I18n.t('preferences.header')}
                 backIcon={true}
                 navigation={navigation}
                 goBack={(): any => { navigation.goBack() }}
@@ -70,7 +66,7 @@ const DrinkPreferences = ({ navigation, route }) => {
                 <View style={styles.detailContainer} >
                     <View style={{ flex: 5 }} >
                         <Text style={[commonStyles.text, styles.itemNameText]} >{item.strDrink}</Text>
-                        <Text style={[commonStyles.text, { color: colors.darkGray }]}>{"36 EGP"}</Text>
+                        <Text style={[commonStyles.text, { color: colors.darkGray }]}>{`36 ${I18n.t('preferences.egp')}`}</Text>
                     </View>
                     <View style={styles.cartCountContainer} >
                         <Text>{cartCount}</Text>
@@ -89,28 +85,23 @@ const DrinkPreferences = ({ navigation, route }) => {
                     </View>
                 </View>
 
-
                 <View style={styles.detailContainer} >
-                    {attributeLabel("Size")}
+                    {attributeLabel(I18n.t('preferences.size'))}
                 </View>
 
                 <View style={styles.detailContainer} >
-                    {attributeLabel("Sugar")}
+                    {attributeLabel(I18n.t('preferences.sugar'))}
                 </View>
 
                 <View style={styles.detailContainer} >
-                    {attributeLabel("Additions")}
+                    {attributeLabel(I18n.t('preferences.additions'))}
                 </View>
 
                 <View style={styles.totalContainer} >
-                    <View>
-                        <Text style={[commonStyles.text, { fontSize: 28 }]}>{"Total"}</Text>
-                    </View>
-                    <View>
-                        <Text style={[commonStyles.text, styles.totalEgp]}>{"42"}<Text style={{ fontSize: 20 }} >{" EGP"}</Text></Text>
-                    </View>
+                    <Text style={[commonStyles.text, { fontSize: 28 }]}>{I18n.t('preferences.total_text')}</Text>
+                    <Text style={[commonStyles.text, styles.totalEgp]}>{cartCount}<Text style={{ fontSize: 20 }} >{` ${I18n.t('preferences.egp')}`}</Text></Text>
                 </View>
-                
+
             </ScrollView>
             <Button
                 text={'Add to cart'}

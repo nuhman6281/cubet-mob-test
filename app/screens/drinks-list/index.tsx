@@ -11,6 +11,7 @@ import { SPINNER_COLORS } from '../../constants/app-constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCoffeeDetail } from '../../actions/coffie-actions';
 import { Avatar, Icon } from 'react-native-elements';
+import I18n from '../../i18n/i18n';
 
 const NEXT_ICON = 'chevron-right';
 const NEXT_ICON_TYPE = 'entypo';
@@ -25,7 +26,7 @@ const DrinksList = ({ navigation, route }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             header: () => <AppHeader
-                headerText={"Menu"}
+                headerText={I18n.t('drinks_screen.header')}
                 backIcon={true}
                 navigation={navigation}
                 goBack={(): any => { navigation.goBack() }}
