@@ -12,7 +12,7 @@ function* fetchCoffeeDetailsList({ payload }) {
   try {
     const fetchCoffeeDetailsListResponse = yield call(CoffeeApi.fetchCoffeeDetails, payload);
     if ("drinks" in fetchCoffeeDetailsListResponse) {
-      yield put({ type: FETCH_COFFEE_DETAILS_SUCCESS, 'fetchCoffeeDetailsListResponse': { success: true, data: payload } });
+      yield put({ type: FETCH_COFFEE_DETAILS_SUCCESS, 'fetchCoffeeDetailsListResponse': { success: true, data: fetchCoffeeDetailsListResponse } });
     } else {
       yield put({ type: FETCH_COFFEE_DETAILS_FAILURE, 'fetchCoffeeDetailsListResponse': { success: false, errorMsg: I18n.t('app_common.common_error') } })
     }

@@ -35,7 +35,7 @@ const LoginPage = ({ navigation, route }) => {
     }
 
     const onPressLogin = () => {
-        navigation.navigate("")
+        navigation.navigate("DrinksList");
     }
 
     return (
