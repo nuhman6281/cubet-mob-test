@@ -85,26 +85,21 @@ const DrinkPreferences = ({ navigation, route }) => {
                     </View>
                 </View>
 
-
                 <View style={styles.detailContainer} >
-                    {attributeLabel("Size")}
+                    {attributeLabel(I18n.t('preferences.size'))}
                 </View>
 
                 <View style={styles.detailContainer} >
-                    {attributeLabel("Sugar")}
+                    {attributeLabel(I18n.t('preferences.sugar'))}
                 </View>
 
                 <View style={styles.detailContainer} >
-                    {attributeLabel("Additions")}
+                    {attributeLabel(I18n.t('preferences.additions'))}
                 </View>
 
                 <View style={styles.totalContainer} >
-                    <View>
-                        <Text style={[commonStyles.text, { fontSize: 28 }]}>{I18n.t('preferences.total_text')}</Text>
-                    </View>
-                    <View>
-                        <Text style={[commonStyles.text, styles.totalEgp]}>{cartCount}<Text style={{ fontSize: 20 }} >{` ${I18n.t('preferences.egp')}`}</Text></Text>
-                    </View>
+                    <Text style={[commonStyles.text, { fontSize: 28 }]}>{I18n.t('preferences.total_text')}</Text>
+                    <Text style={[commonStyles.text, styles.totalEgp]}>{cartCount}<Text style={{ fontSize: 20 }} >{` ${I18n.t('preferences.egp')}`}</Text></Text>
                 </View>
 
             </ScrollView>

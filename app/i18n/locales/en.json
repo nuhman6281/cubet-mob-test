@@ -16,6 +16,9 @@
   "preferences": {
     "header": "Preferences",
     "total_text": "Total",
-    "egp": "EGP"
+    "egp": "EGP",
+    "size": "Size",
+    "sugar": "Sugar",
+    "additions": "Additions"
   }
 }
