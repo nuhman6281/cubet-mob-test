@@ -54,9 +54,14 @@ const DrinksList = ({ navigation, route }) => {
         dispatch(fetchCoffeeDetail(''));
     }
 
+    const onPressDrinkItem = (item) => {
+        navigation.navigate('DrinkPreferences', { item });
+    }
+
     const renderItem = (item, index) => {
         return (
             <TouchableOpacity
+                onPress={() => { onPressDrinkItem(item) }}
                 activeOpacity={0.5}
                 style={[styles.itemContainer,
                 (index == 0) && { borderTopWidth: 0.3, borderTopColor: colors.placeholder },
