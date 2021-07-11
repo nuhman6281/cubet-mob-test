@@ -71,17 +71,19 @@ const DrinkPreferences = ({ navigation, route }) => {
                     <View style={styles.cartCountContainer} >
                         <Text>{cartCount}</Text>
                     </View>
-                    <View style={styles.cartOperationsContainer}>
-                        <TouchableOpacity
-                            onPress={() => onPressCartOperationButton(REMOVE_CART)}
-                            style={[styles.cartOperationButton, styles.addButton]}>
-                            <Text style={[commonStyles.text, styles.cartButtonText]} >{"-"}</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => onPressCartOperationButton(ADD_CART)}
-                            style={[styles.cartOperationButton, styles.removeButton]}>
-                            <Text style={[commonStyles.text, styles.cartButtonText]}>{"+"}</Text>
-                        </TouchableOpacity>
+                    <View style={{ flex: 3, justifyContent: 'center' }} >
+                        <View style={styles.cartOperationsContainer}>
+                            <TouchableOpacity
+                                onPress={() => onPressCartOperationButton(REMOVE_CART)}
+                                style={[styles.cartOperationButton, styles.addButton]}>
+                                <Text style={[commonStyles.text, styles.cartButtonText]} >{"-"}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => onPressCartOperationButton(ADD_CART)}
+                                style={[styles.cartOperationButton, styles.removeButton]}>
+                                <Text style={[commonStyles.text, styles.cartButtonText]}>{"+"}</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
 
@@ -141,7 +143,6 @@ const styles = StyleSheet.create({
     },
     cartOperationsContainer: {
         flexDirection: 'row',
-        flex: 3,
         justifyContent: 'space-around'
     },
     cartOperationButton: {
