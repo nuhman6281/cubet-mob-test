@@ -5,8 +5,6 @@ import {
     View
 } from 'react-native';
 import { colors } from '../../constants/theme';
-import { HeaderBackIcon } from './components/header-left';
-import { HeaderTextContainer } from './components/header-container';
 import { commonStyles } from '../../styles';
 import Text from '../display-text/display-text';
 import I18n from 'i18n-js';
@@ -16,7 +14,7 @@ const BACK_ICON = 'chevron-left';
 const BACK_ICON_TYPE = 'entypo';
 
 type ChildProps = {
-    goBack?: Function,
+    goBack?(): Function,
     navigation?: any,
     headerText?: string,
     backIcon?: boolean,
@@ -32,7 +30,7 @@ const AppHeader: FC<ChildProps> = ({
     const backButton = () => {
         return (
             <View style={styles.backArrowContainer} >
-                <TouchableOpacity  >
+                <TouchableOpacity onPress={goBack} >
                     <Icon
                         name={BACK_ICON}
                         type={BACK_ICON_TYPE}

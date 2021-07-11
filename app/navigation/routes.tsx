@@ -5,6 +5,7 @@ import { colors, fonts } from '../constants/theme';
 //import screens
 import LoginPage from '../screens/login/index';
 import AppHeader from '../components/app-header/app-header';
+import DrinksList from '../screens/drinks-list';
 
 
 const Stack = createStackNavigator();
@@ -21,6 +22,10 @@ function LoginPageStackScreens(props) {
       <Stack.Screen
         name="LoginPage"
         component={LoginPage} />
+
+      <Stack.Screen
+        name="DrinksList"
+        component={DrinksList} />
 
     </Stack.Navigator>
   );

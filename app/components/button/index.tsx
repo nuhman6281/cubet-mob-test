@@ -19,7 +19,7 @@ const Button: FC<ChildProps> = ({
     onPress
 }): ReactElement => {
     return (
-        <TouchableOpacity style={styles.container} >
+        <TouchableOpacity onPress={onPress} style={styles.container} >
             <Text style={[commonStyles.text, { color: colors.primaryColor }]}>{i18n.t('login_screen.header')}</Text>
         </TouchableOpacity>
     );
