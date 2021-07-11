@@ -20,6 +20,7 @@ type ChildProps = {
     isEditable?: boolean;
     autoFocus?: boolean;
     onSubmit?(): Function
+    secureTextEntry?: boolean;
 }
 
 const CustomTextInput: FC<ChildProps> = ({
@@ -33,12 +34,14 @@ const CustomTextInput: FC<ChildProps> = ({
     returnKeyType,
     isEditable,
     autoFocus,
-    onSubmit
+    onSubmit,
+    secureTextEntry
 }): ReactElement => {
 
     return (
         <View style={[styles.textInputContainer, { ...containerStyle }]} >
             <TextInput
+                secureTextEntry={secureTextEntry}
                 onSubmitEditing={() => { onSubmitEditing(onSubmit) }}
                 onEndEditing={() => { Keyboard.dismiss() }}
                 editable={isEditable}
@@ -62,7 +65,7 @@ export default CustomTextInput;
 
 const styles = StyleSheet.create({
     textInputContainer: {
-        
+
     },
     textInput: {
         fontSize: 17,

@@ -4,6 +4,10 @@
     "common_error": "Something went wrong"
   },
   "login_screen": {
-    "header": "Login"
+    "welcome_back": "Welcome back!",
+    "header": "Login",
+    "no_account_text": "Don’t have an account?",
+    "register": "Register",
+    "forgotPassword": "Forgot password"
   }
 }

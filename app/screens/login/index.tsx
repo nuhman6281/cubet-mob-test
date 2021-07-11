@@ -8,14 +8,22 @@ import CustomTextInput from '../../components/text-input';
 import { StyleSheet } from 'react-native';
 import Button from '../../components/button';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { loginUser } from '../../actions/user-actions';
+import { ToastAndroid } from 'react-native';
 
 const LoginPage = ({ navigation, route }) => {
+    const dispatch = useDispatch();
 
     const [loginDetail, setLoginDetail] = useState({
         email: "admin",
         password: "admin"
     });
+
+    const [loading, setLoading] = useState(false);
+
+    const loginResponse = useSelector((state: any) => state?.user?.loginResponse);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -27,6 +35,8 @@ const LoginPage = ({ navigation, route }) => {
         });
     }, [navigation]);
 
+
+
     const onChangeText = (text, accessor) => {
         setLoginDetail({
             ...loginDetail,
@@ -34,8 +44,26 @@ const LoginPage = ({ navigation, route }) => {
         });
     }
 
+    useEffect(() => {
+        if (loading) {
+            if (loginResponse?.success) {
+                setLoading(false);
+                navigation.navigate("DrinksList");
+            }
+            else {
+                ToastAndroid.show("Incorrect username and password", ToastAndroid.SHORT);
+                setLoading(false);
+            }
+        }
+    }, [loginResponse])
+
     const onPressLogin = () => {
-        navigation.navigate("DrinksList");
+        //user admin as username and password
+        setLoading(true);
+        dispatch(loginUser({
+            userName: loginDetail.email,
+            password: loginDetail.password
+        }))
     }
 
     return (
@@ -47,7 +75,7 @@ const LoginPage = ({ navigation, route }) => {
                         <Text style={{
                             fontSize: 32,
                             color: colors.brownColor
-                        }} >{"Welcome back!"}</Text>
+                        }} >{i18n.t('login_screen.welcome_back')}</Text>
                     </View>
 
                     <View style={{ marginTop: 25 }} >
@@ -59,6 +87,7 @@ const LoginPage = ({ navigation, route }) => {
                         />
                         <CustomTextInput
                             value={loginDetail.password}
+                            secureTextEntry={true}
                             placeholder={'Password'}
                             onChangeText={(value): any => onChangeText(value, "password")}
                             containerStyle={{ marginTop: 10 }}
@@ -67,21 +96,22 @@ const LoginPage = ({ navigation, route }) => {
 
                     <View style={styles.forgotPasswordContainer} >
                         <TouchableOpacity>
-                            <Text style={styles.text} >{"Forgot password"}</Text>
+                            <Text style={styles.text} >{i18n.t('login_screen.forgotPassword')}</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={{ marginTop: 30 }}>
                         <Button
                             onPress={(): any => onPressLogin()}
+                            text={i18n.t('login_screen.header')}
                         />
                     </View>
 
                     <View style={styles.registerTextContainer} >
                         <TouchableOpacity>
                             <Text style={[styles.text, { color: colors.placeholder }]} >
-                                {`${"Don’t have an account?"} `}
-                                <Text style={styles.text}>{"Register"}</Text>
+                                {`${i18n.t('login_screen.no_account_text')} `}
+                                <Text style={styles.text}>{i18n.t('login_screen.register')}</Text>
                             </Text>
                         </TouchableOpacity>
                     </View>

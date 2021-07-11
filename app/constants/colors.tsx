@@ -7,6 +7,8 @@ const basicTheme = {
     spinnerPrimaryColor: '#A80760',
     spinnerSecondaryColor: '#67CC26',
     spinnerTertiaryColor: '#162BC7',
+    darkGray: '#383537',
+    darkBrown: '#2D140D'
 };
 
 const reddishTheme = {
