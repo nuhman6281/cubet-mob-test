@@ -110,9 +110,7 @@ const DrinkPreferences = ({ navigation, route }) => {
                         <Text style={[commonStyles.text, styles.totalEgp]}>{"42"}<Text style={{ fontSize: 20 }} >{" EGP"}</Text></Text>
                     </View>
                 </View>
-
-
-
+                
             </ScrollView>
             <Button
                 text={'Add to cart'}
