@@ -5,7 +5,7 @@ import I18n from '../../i18n/i18n';
 
 const onSubmitEditing = (onSubmit) => {
     Keyboard.dismiss();
-    onSubmit();
+    onSubmit && onSubmit();
 }
 
 type ChildProps = {
