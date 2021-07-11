@@ -12,7 +12,7 @@ import DrinkPreferences from '../screens/preferences';
 const Stack = createStackNavigator();
 
 
-function LoginPageStackScreens(props) {
+function StackScreens(props) {
   return (
     <Stack.Navigator screenOptions={{
       ...screenOptions,
@@ -52,8 +52,8 @@ export function AppRoutes({ navigation, route }, props) {
 
       <Stack.Screen
         options={{ headerShown: false }}
-        name="LoginPageStackScreens"
-        component={LoginPageStackScreens} />
+        name="StackScreens"
+        component={StackScreens} />
 
     </Stack.Navigator>
   );
